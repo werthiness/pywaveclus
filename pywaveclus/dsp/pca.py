@@ -5,7 +5,7 @@ import os
 import numpy as np
 
 # from matplotlib.mlab import PCA
-from scikits.learn.decomposition.pca import PCA
+from sklearn.decomposition.pca import PCA
 
 global FEATURES
 FEATURES = None

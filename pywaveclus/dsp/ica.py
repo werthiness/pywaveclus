@@ -2,7 +2,7 @@
 
 import numpy as np
 
-import scikits.learn.decomposition
+import sklearn.decomposition
 
 
 def features(waveforms, nfeatures=6):
@@ -15,6 +15,6 @@ def features(waveforms, nfeatures=6):
             wf = np.hstack((wf, ch))
         waves.append(wf)
     waves = np.array(waves)
-    ica = scikits.learn.decomposition.FastICA(nfeatures)
+    ica = sklearn.decomposition.FastICA(nfeatures)
     ica.fit(waves.T)
     return ica.transform(waves.T).T

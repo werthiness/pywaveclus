@@ -2,8 +2,8 @@
 
 
 import numpy as np
-import scikits.learn.cluster
-import scikits.learn.mixture
+import sklearn.cluster
+import sklearn.mixture
 
 from .. import dsp
 
@@ -82,7 +82,7 @@ def cluster(waveforms, nfeatures, featuretype, nclusters, \
     else:
         raise ValueError("Unknown feature type[%s]" % featuretype)
 
-    kmeans = scikits.learn.cluster.KMeans(k=nclusters)
+    kmeans = sklearn.cluster.KMeans(k=nclusters)
     np.save('waves_%i' % features.shape[0], waveforms)
     np.save('features_%i' % features.shape[0], features)
     kmeans.fit(features)
@@ -99,7 +99,7 @@ def gmm(waveforms, nfeatures, ftype, nclusters, separate, pre, minspikes, \
     raise NotImplementedError("Not yet implemented")
     if len(waveforms) < minspikes:
         return np.zeros(len(waveforms)), {}
-    g = scikits.learn.mixture.GMM(nclusters, cvtype)
+    g = sklearn.mixture.GMM(nclusters, cvtype)
     if featuretype == 'pca':
         features, pca_info = dsp.pca.features(waveforms, nfeatures)
     pass
